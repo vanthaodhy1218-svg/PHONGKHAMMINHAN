@@ -1056,49 +1056,57 @@
       </div>
       <a href="https://maps.google.com/?q=22+Le+Loi+An+Binh+An+Khe+Gia+Lai" target="_blank" class="btn-primary" style="display:inline-flex;margin-top:8px;font-size:14px">🗺️ Xem bản đồ</a>
     </div>
-    <div class="contact-form-card">
-      <h3>Đặt lịch khám online</h3>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Họ và tên *</label>
-          <input type="text" placeholder="Tên bệnh nhân" id="f-name">
-        </div>
-        <div class="form-field">
-          <label>Số điện thoại *</label>
-          <input type="tel" placeholder="09xx xxx xxx" id="f-phone">
-        </div>
+<div class="contact-form-card">
+  <h3>Đặt lịch khám online</h3>
+  
+  <form name="dat-lich-kham" method="POST" data-netlify="true">
+    
+    <div class="form-row">
+      <div class="form-field">
+        <label>Họ và tên *</label>
+        <input type="text" placeholder="Tên bệnh nhân" id="f-name" name="ho-ten" required>
       </div>
       <div class="form-field">
-        <label>Chuyên khoa</label>
-        <select id="f-spec">
-          <option>Nội Tim Mạch</option>
-          <option>Nội Tiết – Đái Tháo Đường</option>
-          <option>Chuyển Hoá – Lipid Máu</option>
-          <option>Sức Khoẻ Tổng Quát</option>
+        <label>Số điện thoại *</label>
+        <input type="tel" placeholder="09xx xxx xxx" id="f-phone" name="so-dien-thoai" required>
+      </div>
+    </div>
+    
+    <div class="form-field">
+      <label>Chuyên khoa</label>
+      <select id="f-spec" name="chuyen-khoa">
+        <option>Nội Tim Mạch</option>
+        <option>Nội Tiết – Đái Tháo Đường</option>
+        <option>Chuyển Hoá – Lipid Máu</option>
+        <option>Sức Khoẻ Tổng Quát</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-field">
+        <label>Ngày khám</label>
+        <input type="date" id="f-date" name="ngay-kham">
+      </div>
+      <div class="form-field">
+        <label>Buổi khám</label>
+        <select id="f-time" name="buoi-kham">
+          <option>Sáng (7:30 – 11:30)</option>
+          <option>Chiều (13:30 – 17:00)</option>
         </select>
       </div>
-      <div class="form-row">
-        <div class="form-field">
-          <label>Ngày khám</label>
-          <input type="date" id="f-date">
-        </div>
-        <div class="form-field">
-          <label>Buổi khám</label>
-          <select id="f-time">
-            <option>Sáng (7:30 – 11:30)</option>
-            <option>Chiều (13:30 – 17:00)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-field">
-        <label>Triệu chứng / ghi chú</label>
-        <textarea placeholder="Mô tả ngắn triệu chứng hoặc yêu cầu đặc biệt..." id="f-note"></textarea>
-      </div>
-      <button class="btn-primary" style="width:100%;justify-content:center;border:none;font-size:15px;padding:14px" onclick="submitForm()">
-        ✅ Xác nhận đặt lịch
-      </button>
-      <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:10px">Chúng tôi sẽ gọi xác nhận lịch trong vòng 30 phút. ĐT: <strong>0905 454 140</strong></p>
     </div>
+    
+    <div class="form-field">
+      <label>Triệu chứng / ghi chú</label>
+      <textarea placeholder="Mô tả ngắn triệu chứng hoặc yêu cầu đặc biệt..." id="f-note" name="trieu-chung"></textarea>
+    </div>
+    
+    <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;font-size:15px;padding:14px">
+      ✅ Xác nhận đặt lịch
+    </button>
+    
+  </form> <p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:10px">Chúng tôi sẽ gọi xác nhận lịch trong vòng 30 phút. ĐT: <strong>0905 454 140</strong></p>
+</div>
   </div>
 </section>
 
@@ -1132,15 +1140,7 @@
 </div>
 
 <script>
-function submitForm() {
-  const name = document.getElementById('f-name').value;
-  const phone = document.getElementById('f-phone').value;
-  if (!name || !phone) {
-    alert('Vui lòng nhập họ tên và số điện thoại để đặt lịch!');
-    return;
-  }
-  alert('✅ Đặt lịch thành công!\n\nHọ tên: ' + name + '\nSĐT: ' + phone + '\n\nPhòng Khám Minh An sẽ gọi xác nhận trong 30 phút.\nĐT: 0905 454 140\n\nCảm ơn bạn đã tin tưởng!');
-}
+
 // Smooth reveal on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fade-in'); });
